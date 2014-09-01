@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AB-Check - HackBulgaria", "AB-Check - HackBulgaria\AB-Check - HackBulgaria.vcxproj", "{EF51A952-FB87-44D1-9601-BDCCFA05ADB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF51A952-FB87-44D1-9601-BDCCFA05ADB5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF51A952-FB87-44D1-9601-BDCCFA05ADB5}.Debug|Win32.Build.0 = Debug|Win32
+		{EF51A952-FB87-44D1-9601-BDCCFA05ADB5}.Release|Win32.ActiveCfg = Release|Win32
+		{EF51A952-FB87-44D1-9601-BDCCFA05ADB5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
