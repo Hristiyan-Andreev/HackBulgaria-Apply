@@ -2,53 +2,94 @@
 #include <stdlib.h>
 #include <string.h>
 
-void DashInsert(int num);
+typedef enum BOOL {True = 1, False = 0} BOOL;
+typedef enum STATE {String, A, Char1, Char2, B} STATE;
+
+STATE Find(char ch, STATE state);
+BOOL KMP(char str[]);
 
 int main()
 {
-	int num;
-	int i;
+	char str[100];
+	BOOL result;
 
-	printf("Insert a number:\n");
-	scanf("%d", &num);
-	fflush(stdin);
-	DashInsert(num);
+	printf("Input your string!\n");
+	fgets(str, 99, stdin);
 
+	result = KMP(str);
+	if (result == True)
+	{
+		printf("True");
+	}
+	else
+	{
+		printf("False");
+	}
 	system("pause");
 	return 0;
 }
 
-void DashInsert(int num)
+BOOL KMP(char str[])
 {
-	int i, j, integer[2];
-	char oldstr[16];
-	char newstr[31];
+	char *pt = str;
+	STATE state = String;
 
-	sprintf(oldstr,"%d", num);
-
-	for(i=0,j=0; i<strlen(oldstr); i++)
+	while(*pt !='\0')
 	{
-		integer[0] = oldstr[i] - '0';
-		integer[1] = oldstr[i+1] - '0';
-		if(integer[0] % 2 != 0 && integer[1] % 2 != 0)
+		state = Find(*pt, state);
+		if(state == B)
 		{
-			newstr[j] = oldstr[i];
-			newstr[j+1] = '-';
-			newstr[j+2] = oldstr[i+1];
-
-			j+=2;
+			return True;
 		}
-		else
-		{
-			newstr[j] = oldstr[i];
-			newstr[j+1] = oldstr[j+1];
-			j++;
-		}
+		pt++;
 	}
-	newstr[j] = '\0';
+	return False;
+}
 
-	printf("\nBefore: ");
-	puts(oldstr);
-	printf("\nAfter: ");	
-	puts(newstr);
+STATE Find(char ch, STATE state)
+{
+	switch(state)
+	{
+		case String:
+			if(ch == 'a')
+			{
+				state = A;
+			}
+			break;
+		case A:
+			if(ch != 'b')
+			{
+				state = Char1;
+			}
+			else
+			{
+				state = String;
+			}
+			break;
+		case Char1:
+			if(ch !='b')
+			{
+				state = Char2;
+			}
+			else
+			{
+				state = String;
+			}
+			break;
+		case Char2:
+			if(ch == 'b')
+			{
+				state = B;
+			}
+			else if(ch == 'a')
+			{
+				state = A;
+			}		
+			else 
+			{
+				state = String;
+			}
+			break;		
+	}
+	return state;
 }
